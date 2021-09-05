@@ -1,0 +1,41 @@
+<div class="container">
+ <div class="row">
+  <h3 class="col-sm-3 bg-secondary text-center mt-5 mb-5">ジャンル一覧・追加</h3>
+ </div>
+</div>
+
+<div class="container">
+  <div class="row">
+   <table class="col-sm-6">
+    <%= form_with model:@genre, local:true do |f| %>
+     <tr>
+      <th>ジャンル名</th>
+      <th><%= f.text_field :name %></th>
+
+      <th><%= f.submit '新規登録', class: "btn btn-success btn-block" %></th>
+     </tr>
+    <% end %>
+   </table>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+   <div class="col-sm-4">
+    <table class="table">
+     <thead>
+      <tr>ジャンル</tr>
+     </thead>
+    
+     <tbody>
+      <% @genres.each do |genre| %>
+       <tr>
+        <th><%= genre.name %></th>
+        <th><%= link_to "編集する", edit_genre_path(genre.id) %></th>
+       </tr>
+      <% end %>
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </div>
