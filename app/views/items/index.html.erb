@@ -1,6 +1,7 @@
 <div class="container">
  <div class="row">
   <h3 class="col-sm-3 bg-secondary text-center mt-5 mb-5">商品一覧</h3>
+  <%= link_to "新規登録", new_item_path %>
  </div>
 </div>
 
@@ -24,8 +25,12 @@
         <th><%= item.id %></th>
         <th><%= item.name %></th>
         <th><%= item.price %></th>
-        <th><%= item.genre_id %></th>
-        <th><%= item.is_active %></th>
+        <th><%= item.genre.name %></th>
+        <% if item.is_active == true %>
+         <th>販売中</th> 
+        <% else %>
+         <th>販売停止中</th>
+        <% end %>
        </tr>
       <% end %>
      </tbody>
