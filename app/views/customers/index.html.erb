@@ -1,0 +1,33 @@
+<div class="container">
+ <div class="row">
+  <h3 class="col-sm-3 bg-secondary text-center mt-5 mb-5">会員一覧</h3>
+ </div>
+</div>
+
+<div class="container">
+  <div class="row">
+   <div class="col-sm-10">
+    <table class="table">
+     <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+     </thead>
+    
+     <tbody>
+      <% @customers.each do |customer| %>
+       <tr>
+        <th><%= customer.id %></th>
+        <th><%= link_to customer.full_name %></th>
+        <th><%= customer.email %></th>
+        <th>有効</th>
+       </tr>
+      <% end %>
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </div>
