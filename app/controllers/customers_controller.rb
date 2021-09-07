@@ -4,11 +4,21 @@ class CustomersController < ApplicationController
   end
   
   def show
-    @customers.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
   
-  def item_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number)
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+  
+  def update
+    @customer = Customer.find(params[:id])
+    @customer.update(customer_params)
+    redirect_to customer_path(@customer.id)
+  end
+  
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :is_active)
   end
   
 end

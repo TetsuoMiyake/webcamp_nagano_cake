@@ -1,5 +1,64 @@
 <div class="container">
  <div class="row">
-  <h3 class="col-sm-3 bg-secondary text-center mt-5 mb-5">会員詳細</h3>
+  <h3 class="col-sm-4 bg-secondary text-center mt-5 mb-5"><%= @customer.full_name %>さんの会員詳細</h3>
  </div>
 </div>
+
+<div class="container">
+   <div class="row">
+    <table class="col-sm-8">
+     <tr>
+      <th>会員ID</th>
+      <th><%= @customer.id %></th>
+     </tr>
+     
+     <tr>
+      <th>氏名</th>
+      <th><%= @customer.last_name %>　<%= @customer.first_name %></th>
+     </tr>
+     
+     <tr>
+      <th>フリガナ</th>
+      <th><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></th>
+     </tr>
+     
+     <tr>
+      <th>郵便番号</th>
+      <th><%= @customer.postal_code %></th>
+     </tr>
+     
+     <tr>
+      <th>住所</th>
+      <th><%= @customer.address %></th>
+     </tr>
+     
+     <tr>
+      <th>電話番号</th>
+      <th><%= @customer.telephone_number %></th>
+     </tr>
+     
+     <tr>
+      <th>メールアドレス</th>
+      <th><%= @customer.email %></th>
+     </tr>
+     
+     <tr>
+      <th>会員ステータス</th>
+      <% if @customer.is_active == true %>
+        <th>有効</th> 
+      <% else %>
+        <th>退会</th>
+      <% end %>
+     </tr>
+    </table>
+   </div>
+  </div>
+  
+  <div class="container">
+   <div class="row">
+    <div class="col-sm-2 mx-auto">
+     <%= link_to "編集する",edit_customer_path(@customer.id) %>
+     <%= link_to "注文一覧" %>
+    </div>
+   </div>
+  </div>
