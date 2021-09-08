@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#top'
   
-  resources :genres, only: [:index, :create, :edit, :update]
   resources :items, only: [:index, :show]
   resources :admins
   resources :customers, only: [:index, :show, :edit, :update]
@@ -20,5 +19,6 @@ Rails.application.routes.draw do
   
   namespace :admin do
       resources :items, only: [:new, :index, :create, :show, :edit, :update]
+      resources :genres, only: [:index, :create, :edit, :update]
   end
 end

@@ -7,11 +7,13 @@
 <div class="container">
   <div class="row">
    <table class="col-sm-6">
-    <%= form_with model:@genre, local:true do |f| %>
+    <%= form_with model: [:admin, @genre], local:true do |f| %>
      <tr>
       <th>ジャンル名</th>
       <th><%= f.text_field :name %></th>
-      <th><%= f.submit '新規登録', class: "btn btn-success btn-block" %></th>
+      <th>
+       <div><%= f.submit '新規登録', class: "btn btn-success btn-block" %></div>
+      </th>
      </tr>
     <% end %>
    </table>
@@ -30,7 +32,7 @@
       <% @genres.each do |genre| %>
        <tr>
         <th><%= genre.name %></th>
-        <th><%= link_to "編集する", edit_genre_path(genre.id) %></th>
+        <th><%= link_to "編集する", edit_admin_genre_path(genre.id) %></th>
        </tr>
       <% end %>
      </tbody>
