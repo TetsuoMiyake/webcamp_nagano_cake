@@ -11,14 +11,21 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#top'
+  get "about" => "homes#about", as: :about
+  get "/:current_customers/my_page" => "customers#show", as: :my_page
+  get "/:current_customers/edit" => "customers#edit", as: :edit_customer
   
   resources :items, only: [:index, :show]
   resources :admins
-  resources :customers, only: [:index, :show, :edit, :update]
+  resources :customers, only: [:index, :show, :update]
   resources :order_details, only: [:index, :show, :edit, :update]
   
   namespace :admin do
       resources :items, only: [:new, :index, :create, :show, :edit, :update]
       resources :genres, only: [:index, :create, :edit, :update]
+      resources :customers, only: [:index, :show, :edit, :update]
+      resources :orders, only: [:show, :update]
+      resources :order_details, only: [:update]
+      root to: 'homes#top'
   end
 end

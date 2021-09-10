@@ -1,10 +1,10 @@
 <div class="container">
  <div class="row">
-  <h3 class="col-sm-3 bg-secondary text-center mt-5 mb-5">会員情報編集</h3>
+  <h3 class="col-sm-4 bg-secondary text-center mt-5 mb-5"><%= @customer.full_name %>さんの会員情報編集</h3>
  </div>
 </div>
 
-<%= form_with model:@customer, local:true do |f| %>
+<%= form_with model: [:admin, @customer], local:true do |f| %>
   <div class="container">
    <div class="row">
     <table class="col-sm-8">
@@ -25,7 +25,7 @@
      
      <tr>
       <th>郵便番号</th>
-      <th><%= f.text_field :postal_code %></th>
+      <th><%= f.text_area :postal_code, class: "form-control" %></th>
      </tr>
      
      <tr>
@@ -35,27 +35,31 @@
      
      <tr>
       <th>電話番号</th>
-      <th><%= f.text_field :telephone_number %></th>
+      <th><%= f.text_field :telephone_number, class: "form-control" %></th>
      </tr>
      
      <tr>
       <th>メールアドレス</th>
-      <th><%= f.text_field :email %></th>
+      <th><%= f.text_field :email, class: "form-control" %></th>
      </tr>
      
+     <tr>
+      <th>販売ステータス</th>
+      <th>
+       <%= f.radio_button :is_active, :true %>
+       <%= f.label :is_active, "有効" %>
+       <%= f.radio_button :is_active, :false %>
+       <%= f.label :is_active, "退会" %>
+      </th>
+     </tr>
     </table>
    </div>
   </div>
   
   <div class="container">
    <div class="row">
-    <div class="col-sm-6 mx-auto">
-     <table>
-      <tr>
-       <th><%= f.submit '変更を保存', class: "btn btn-success form-control" %></th>
-       <th><%= f.submit '退会する', class: "btn btn-danger form-control" %></th>
-      </tr>
-     </table>
+    <div class="col-sm-2 mx-auto">
+     <%= f.submit '変更を保存', class: "btn btn-success form-control" %>
     </div>
    </div>
   </div>
