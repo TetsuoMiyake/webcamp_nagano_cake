@@ -20,31 +20,18 @@
      </tr>
      
      <tr>
-      <th>ジャンル</th>
-      <th><%= @item.genre.name %></th>
-     </tr>
-     
-     <tr>
       <th>税込価格</th>
-      <th><%= (@item.price * 1.1).floor %>(<%= @item.price %>)円</th>
+      <th><%= (@item.price * 1.1).floor %>（税込）</th>
      </tr>
      
+     <%= form_with model:@cart_item, local:true do |f| %>
+      <%= f.hidden_field :cart_item, :value => item.id  %>
      <tr>
-      <th>販売ステータス</th>
-      <% if @item.is_active == true %>
-        <th>販売中</th> 
-      <% else %>
-        <th>販売停止中</th>
-      <% end %>
+      <th><%= f.select :amount, *[1..9] %></th>
+      <th>カートに入れる</th>
      </tr>
+     <% end %>
+     
     </table>
-   </div>
-  </div>
-  
-  <div class="container">
-   <div class="row">
-    <div class="col-sm-2 mx-auto">
-     <%= link_to "編集する", edit_item_path(@item.id) %>
-    </div>
    </div>
   </div>

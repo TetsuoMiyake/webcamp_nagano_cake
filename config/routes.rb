@@ -14,11 +14,19 @@ Rails.application.routes.draw do
   get "about" => "homes#about", as: :about
   get "/:current_customers/my_page" => "customers#show", as: :my_page
   get "/:current_customers/edit" => "customers#edit", as: :edit_customer
+  get "/:current_customers/check" => "customers#check", as: :check
+  get "/order_addresses" => "addresses#index", as: :addresses
+  post "/order_addresses" => "addresses#create"
+  get "/order_addresses/:id/edit" => "addresses#edit", as: :edit_address
+  patch "/order_addresses/:id/edit" => "addresses#update"
+  delete "/order_addresses/:id" => "addresses#destroy", as: :destroy_address
+  
   
   resources :items, only: [:index, :show]
   resources :admins
   resources :customers, only: [:index, :show, :update]
   resources :order_details, only: [:index, :show, :edit, :update]
+  resources :cart_items, only: [:new, :create, :show, :edit, :destroy]
   
   namespace :admin do
       resources :items, only: [:new, :index, :create, :show, :edit, :update]
