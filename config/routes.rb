@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :admins
   resources :customers, only: [:index, :show, :update]
   resources :order_details, only: [:index, :show, :edit, :update]
-  resources :cart_items, only: [:new, :create, :show, :edit, :destroy]
+  resources :cart_items, only: [:create, :index, :edit, :destroy, :update]
   
   namespace :admin do
       resources :items, only: [:new, :index, :create, :show, :edit, :update]
