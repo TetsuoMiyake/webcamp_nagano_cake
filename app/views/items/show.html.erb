@@ -25,14 +25,11 @@
      </tr>
      
      <%= form_with model:@cart_item, local:true do |f| %>
-      <%= f.hidden_field :item_id, value: @item_id  %>
-     <tr>
-      <th><%= f.select :amount, *[1..9] %></th>
-      <th>カートに入れる</th>
-      <th>
-       <div><%= f.submit '新規登録', class: "btn btn-success btn-block" %></div>
-      </th>
-     </tr>
+      <%= f.hidden_field :item_id, value: @item.id  %>
+      <tr>
+       <th><%= f.select :amount, *[1..9] %></th>
+      </tr>
+      <%= f.submit 'カートに入れる', class: "btn btn-success form-control" %>
      <% end %>
      
     </table>
